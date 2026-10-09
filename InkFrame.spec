@@ -3,7 +3,7 @@
 import os
 
 datas = [('src', 'src')]
-if os.path.exists('ffmpeg.exe'):
+if os.environ.get('INKFRAME_BUNDLE_FFMPEG') == '1' and os.path.exists('ffmpeg.exe'):
     datas.append(('ffmpeg.exe', '.'))
 
 a = Analysis(

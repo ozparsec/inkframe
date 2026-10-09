@@ -50,9 +50,9 @@ python -m pip install pyinstaller
 pyinstaller --noconfirm InkFrame.spec
 ```
 
-构建会生成 `dist/InkFrame.exe`。如果项目根目录存在 `ffmpeg.exe`，构建配置会将其一并捆绑；否则程序会尝试使用系统 `PATH` 中的 FFmpeg。
+构建会生成 `dist/InkFrame.exe`，默认不会捆绑 FFmpeg。程序会尝试使用系统 `PATH` 中的 FFmpeg，也可以将其放在 EXE 旁边。
 
-FFmpeg 不包含在本仓库中。请从 FFmpeg 官方渠道获取，并遵守其适用的许可证条款。
+FFmpeg 不包含在本仓库或默认构建产物中。请从 FFmpeg 官方渠道获取，并遵守其适用的许可证条款。只有在确认有权分发所用 FFmpeg 构建并履行其许可义务后，才通过 `INKFRAME_BUNDLE_FFMPEG=1` 显式要求捆绑。
 
 ## 许可证
 
