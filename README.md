@@ -25,7 +25,17 @@ python -m pip install -r requirements.txt
 python main.py
 ```
 
-如需音频合并和 H.264 转码，请安装 FFmpeg 并确保 `ffmpeg.exe` 位于系统 `PATH` 中，或将其放在项目根目录。
+### FFmpeg（可选依赖）
+
+InkFrame 使用 FFmpeg 将录制的视频转换为 H.264/MP4，并在启用麦克风录音时合并音轨。没有 FFmpeg 时，屏幕录制仍可使用，但音频合并和 H.264/MP4 转换不可用；录制文件可能保留为 AVI。
+
+获取方法：
+
+1. 打开 [FFmpeg 官方下载页](https://ffmpeg.org/download.html)，进入 Windows builds 区域。FFmpeg 官方页面提供 Windows 构建的下载入口。
+2. 可选用 [gyan.dev Windows builds](https://www.gyan.dev/ffmpeg/builds/) 的 `ffmpeg-release-essentials.zip`。解压后找到 `bin/ffmpeg.exe`。
+3. 将 `ffmpeg.exe` 放在 `InkFrame.exe` 同一目录，或把其所在目录加入 Windows `PATH`，然后重新启动 InkFrame。
+
+本项目不捆绑或分发 FFmpeg。不同 FFmpeg 构建可能采用不同许可证；下载和使用前请查看所选构建的许可说明。
 
 ## 快捷键
 
@@ -52,7 +62,7 @@ pyinstaller --noconfirm InkFrame.spec
 
 构建会生成 `dist/InkFrame.exe`，默认不会捆绑 FFmpeg。程序会尝试使用系统 `PATH` 中的 FFmpeg，也可以将其放在 EXE 旁边。
 
-FFmpeg 不包含在本仓库或默认构建产物中。请从 FFmpeg 官方渠道获取，并遵守其适用的许可证条款。只有在确认有权分发所用 FFmpeg 构建并履行其许可义务后，才通过 `INKFRAME_BUNDLE_FFMPEG=1` 显式要求捆绑。
+FFmpeg 不包含在本仓库或默认构建产物中。只有在确认有权分发所用 FFmpeg 构建并履行其许可义务后，才通过 `INKFRAME_BUNDLE_FFMPEG=1` 显式要求捆绑。
 
 ## 许可证
 
